@@ -1,0 +1,30 @@
+bedtools: flexible tools for genome arithmetic and DNA sequence analysis.
+usage:    bedtools <subcommand> [options]
+
+Genes Overlapping predicted HGT regions
+We checked whether our sets of predicted HGT sequences overlapped with known coding genes in ENSEMBL database. We downloaded the Homo sapiens gene data from ENSEMBL database and converted them into bed format file. 
+Usage is shown as follows : 
+bedtools intersect -a ensemble.bed -b track40.bed -wa > output.bed
+
+Chromatin State Analysis
+Using the Broad chromHMM Chromatin State track in 9 cell lines(Gm12878, H1hesc, Hepg2, Hmec, Hsmm, Huvec, K562, Nhek, Nhlf), we checked the chromatin states of HGT regions. 
+Usage is shown as follows : 
+bedtools intersect -a wgEncodeBroadHmmHepg2HMM.bed -b track40.bed -wa > output.bed
+
+Repeat Analysis
+We used the RepeatMasker track from the UCSC Genome Browser to generate distributions of the different types of repeats, including SINEs, LINEs, LTRs, DNA repeats and simple repeats.
+Usage is shown as follows : 
+bedtools intersect -a repeat.bed -b track40.bed -wa > output.bed
+
+Highlighting Conservation in Phylogenetic Tree
+We took the phylogenetic tree directly from the Comparative Genomics track "Vertebrate Multiz Alignment & Conservation (100 Species)". 
+For each HGT region, we extracted the homology sequences from related vertebrate genomes. Then we aligned these homology sequences by ClustalW and constructed the phylogenetic tree by Maximum Likelihood Method using MEGA6. 
+We compared this HGT homologous sequence based phylogenetic tree with the species phylogenetic tree and analyzed the differences between two phylogenetic trees. 
+In order to show the predicted HGT events between these species, we used Sprit to calculate the minimum subtree prune and regraft (SPR) distance between the species phylogenetic tree and the HGT homology sequence based phylogenetic tree.
+
+
+
+
+
+
+
